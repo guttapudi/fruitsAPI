@@ -1,15 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
 const mysql = require('mysql2');
+require("dotenv").config()
+
+console.log('Database hostname:', process.env.DB_HOSTNAME);
+
+const app = express();
 
 app.use(bodyParser.json());
 
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', /* MySQL User */
-  password: 'rootuserpwd', /* MySQL Password */
-  database: 'full-stack-ecommerce' /* MySQL Database */
+  host: process.env.DB_HOSTNAME,
+  user: process.env.DB_USERNAME, /* MySQL User */
+  password: process.env.DB_PASSWORD, /* MySQL Password */
+  database: 'fruitcompany' /* MySQL Database */
 });
 
 
