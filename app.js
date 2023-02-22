@@ -69,7 +69,7 @@ app.post('/api/fruits',(req, res) => {
     let query = conn.query(sqlQuery, (err, results) => {
       if(err) throw err;
       res.setHeader('Content-Type', 'application/json'); 
-      res.status(201);
+      res.status(204);
       res.send(apiResponse({'name': req.params.name, 'quantity': req.body.quantity, 'price': req.body.price}));
     });
   });
